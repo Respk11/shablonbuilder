@@ -1,0 +1,33 @@
+import home.Person;
+import home.PersonBuilder;
+import org.junit.jupiter.api.Test;
+
+public class BuilderTest {
+    @Test
+    public void testBuilder() {
+        Person mom = new PersonBuilder()
+                .setName("Анна")
+                .setSurname("Вольф")
+                .setAge(31)
+                .setAddress("Сидней")
+                .build();
+        Person son = mom.newChildBuilder()
+                .setName("Антошка")
+                .build();
+        System.out.println("У " + mom + " есть сын, " + son);
+
+        try {
+            // Не хватает обяхательных полей
+            new PersonBuilder().build();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            // Возраст недопустимый
+            new PersonBuilder().setAge(-100).build();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+}

@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = 'home'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.platform:junit-platform-commons:1.9.1'
+    testImplementation 'org.apache.commons:commons-lang3:3.6'
+    implementation 'org.apache.commons:commons-text:1.9'
+}
+
+test {
+    useJUnitPlatform()
+}
